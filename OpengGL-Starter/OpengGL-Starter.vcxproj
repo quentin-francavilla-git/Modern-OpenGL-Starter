@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include\GL;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLFW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include\GL;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLFW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLM;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\STDB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include\GL;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLFW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include\GL;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLFW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLM;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\STDB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,6 +136,7 @@
     <ClInclude Include="Engine3D.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="lib.h" />
+    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Texture2D.h" />
   </ItemGroup>
@@ -143,6 +144,7 @@
     <ClCompile Include="Engine3D.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Texture2D.cpp" />
   </ItemGroup>

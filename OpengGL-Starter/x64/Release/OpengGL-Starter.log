@@ -1,7 +1,10 @@
-﻿  Texture2D.cpp
+﻿  Game.cpp
+  ResourceManager.cpp
+  Shader.cpp
+  Texture2D.cpp
+  main.cpp
   Génération de code en cours
-  0 of 74 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 265 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Fin de la génération du code
   OpengGL-Starter.vcxproj -> C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\x64\Release\OpengGL-Starter.exe

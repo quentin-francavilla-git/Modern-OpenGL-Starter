@@ -13,6 +13,11 @@
 #include <time.h>
 #include <math.h>
 #include <memory>
+#include <sstream>
+#include <fstream>
+#include <map>
+
+#define STB_IMAGE_IMPLEMENTATION
 
 using namespace std;
 #define PI 3.14159265359
