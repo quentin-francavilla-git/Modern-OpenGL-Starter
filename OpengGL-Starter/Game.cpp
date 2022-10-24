@@ -64,7 +64,7 @@ void Game::initWindow(const SWindowInfo &windowInfo)
     if (glewInit() != GLEW_OK)
         throw runtime_error("Failed to initialize GLEW");
 
-    // OpenGL configuration
+    // OpenGL configuration //
     // --------------------
     glViewport(0, 0, windowInfo.windowWidth, windowInfo.windowHeight);
     glEnable(GL_BLEND);
