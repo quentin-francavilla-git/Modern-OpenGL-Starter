@@ -71,7 +71,7 @@ void Game::initWindow(const SWindowInfo &windowInfo)
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
-//Method
+//Methods
 GLFWwindow *Game::getWindow() const
 {   
     return _window;
