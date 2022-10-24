@@ -104,12 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Quentin\Documents\Projets\Libs\GLEW\include\GL;C:\Users\Quentin\Documents\Projets\Libs\GLEW\include;C:\Users\Quentin\Documents\Projets\Libs\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include\GL;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLFW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Quentin\Documents\Projets\Libs\GLEW\lib;C:\Users\Quentin\Documents\Projets\Libs\GLEW\lib\Release\x64;C:\Users\Quentin\Documents\Projets\Libs\GLFW\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\lib;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\lib\Release\x64;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLFW\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -121,24 +121,28 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Quentin\Documents\Projets\Libs\GLEW\include\GL;C:\Users\Quentin\Documents\Projets\Libs\GLEW\include;C:\Users\Quentin\Documents\Projets\Libs\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include\GL;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLFW\include;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Quentin\Documents\Projets\Libs\GLEW\lib;C:\Users\Quentin\Documents\Projets\Libs\GLEW\lib\Release\x64;C:\Users\Quentin\Documents\Projets\Libs\GLFW\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\lib;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLEW\lib\Release\x64;C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\libs\GLFW\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Engine3D.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="lib.h" />
+    <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine3D.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

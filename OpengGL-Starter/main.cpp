@@ -6,7 +6,7 @@ int main(void)
     unique_ptr<Game> game = unique_ptr<Game> (new Game());
 
     /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(game->getWindow()))
+    while (!glfwWindowShouldClose(game->getWindow()) && glfwGetKey(game->getWindow(), GLFW_KEY_ESCAPE) != GLFW_PRESS)
     {
         /* Poll for and process events */
         glfwPollEvents();

@@ -1,16 +1,7 @@
 #pragma once
 
 #include "lib.h"
-
-//Define
-//#define res					1									//0=160x120 1=360x240 4=640x480
-//#define screenWidth			160*res								//screen width
-//#define screenHeight        120*res								//screen height
-//#define SW2					(screenWidth/2)						//half of screen width
-//#define SH2					(screenHeight/2)					//half of screen height
-//#define pixelScale			4/res								//OpenGL pixel scale
-//#define windowWidth			(screenWidth*pixelScale)			//OpenGL window width
-//#define windowHeight		(screenHeight*pixelScale)			//OpenGL window height
+#include "Engine3D.h"
 
 struct SWindowInfo
 {

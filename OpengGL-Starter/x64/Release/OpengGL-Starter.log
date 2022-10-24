@@ -1,7 +1,7 @@
-﻿  Game.cpp
+﻿  Shader.cpp
   Génération de code en cours
-  3 of 63 functions ( 4.8%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  9 of 74 functions (12.2%) were compiled, the rest were copied from previous compilation.
+    9 functions were new in current compilation
+    13 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code
   OpengGL-Starter.vcxproj -> C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\x64\Release\OpengGL-Starter.exe
