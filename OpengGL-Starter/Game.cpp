@@ -1,36 +1,19 @@
 #include "Game.h"
 #include "ResourceManager.h"
-void Engine2D_Ortho(float left, float right, float bottom, float top, float back, float front);
+
 //Constructors & Destructors
 Game::Game()
 {
-    SWindowInfo windowInfo{};
-
-    windowInfo.res = 1;
-    windowInfo.screenWidth = 160 * windowInfo.res;
-    windowInfo.screenHeight = 120 * windowInfo.res;
-    windowInfo.SW2 = windowInfo.screenWidth / 2;
-    windowInfo.SH2 = windowInfo.screenHeight / 2;
-    windowInfo.pixelScale = 4 / windowInfo.res;
-    windowInfo.windowWidth = windowInfo.screenWidth * windowInfo.pixelScale;
-    windowInfo.windowHeight = windowInfo.screenHeight * windowInfo.pixelScale;
-    windowInfo.windowTitle = "OpenGL Starter";
-
-    _window = nullptr;
-
-    engine = unique_ptr<Engine3D> (new Engine3D());
-
     try {
-        initWindow(windowInfo);
+        initWindow();
     }
     catch (runtime_error &error) {
         cerr << error.what() << endl;
     }
 
-    //Shader
-    shader = ResourceManager::LoadShader("../shaders/vertex.vs", "../shaders/fragment.fs", nullptr, "shader");
-
-    ResourceManager::GetShader("shader").Use();
+    initOpenGL();
+    initShader();
+    engine = unique_ptr<Engine3D>(new Engine3D());
 
 }
 
@@ -46,6 +29,9 @@ void Game::render()
     glClear(GL_COLOR_BUFFER_BIT);
 
     myVTX *vtx = (myVTX *)malloc(sizeof(myVTX) * 3);
+
+    if (!vtx)
+        return;
 
     vtx[0].x = -0.5f;
     vtx[0].y = -0.5f;
@@ -71,12 +57,52 @@ void Game::render()
     engine->drawPixel(vtx);
 
     free(vtx);
-    //Render here
 }
 
 //Private Functions
-void Game::initWindow(const SWindowInfo &windowInfo)
+void Game::initShader()
 {
+    shader = ResourceManager::LoadShader("../shaders/vertex.vs", "../shaders/fragment.fs", nullptr, "shader");
+
+    ResourceManager::GetShader("shader").Use();
+    cout << "Shaders loaded." << endl;
+}
+
+void Game::initOpenGL()
+{
+    glewExperimental = GL_TRUE;
+
+    if (glewInit() != GLEW_OK)
+        throw runtime_error("Failed to initialize GLEW");
+    cout << "Glew init." << endl;
+
+
+    // OpenGL configuration //
+    glViewport(0, 0, windowInfo.windowWidth, windowInfo.windowHeight);
+    glEnable(GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    glPointSize(8);
+    glLineWidth(5);
+    cout << "OpenGL Configuration." << endl;
+}
+
+void Game::initWindow()
+{
+    //Window data
+    windowInfo.res = 1;
+    windowInfo.screenWidth = 160 * windowInfo.res;
+    windowInfo.screenHeight = 120 * windowInfo.res;
+    windowInfo.SW2 = windowInfo.screenWidth / 2;
+    windowInfo.SH2 = windowInfo.screenHeight / 2;
+    windowInfo.pixelScale = 4 / windowInfo.res;
+    windowInfo.windowWidth = windowInfo.screenWidth * windowInfo.pixelScale;
+    windowInfo.windowHeight = windowInfo.screenHeight * windowInfo.pixelScale;
+    windowInfo.windowTitle = "OpenGL Starter";
+    _window = nullptr;
+
     if (!glfwInit())
         throw runtime_error("Failed to initialize GLFW.");
 
@@ -91,24 +117,9 @@ void Game::initWindow(const SWindowInfo &windowInfo)
         throw runtime_error("Failed to open GLFW window.If you have an Intel GPU, they are not 3.3 compatible.Try the 2.1 version of the tutorials.");
         glfwTerminate();
     }
-
     /* Make the window's context current */
     glfwMakeContextCurrent(_window);
-    glewExperimental = true;
-
-    if (glewInit() != GLEW_OK)
-        throw runtime_error("Failed to initialize GLEW");
-
-    // OpenGL configuration //
-    // --------------------
-    glViewport(0, 0, windowInfo.windowWidth, windowInfo.windowHeight);
-    glEnable(GL_BLEND);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-    glPointSize(8);
-    glLineWidth(5);
+    cout << "Window created." << endl;
 }
 
 //Methods

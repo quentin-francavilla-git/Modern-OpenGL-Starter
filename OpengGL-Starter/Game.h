@@ -31,6 +31,7 @@ private:
 	GameState State;
 
 	//Window
+	SWindowInfo windowInfo;
 	GLFWwindow	*_window;
 	string _windowTitle;
 
@@ -38,13 +39,10 @@ private:
 	unique_ptr<Engine3D> engine;
 	Shader shader;
 
-
-	//Test
-	unsigned int _VAO;
-	unsigned int _shaderProg;
-
 	//Private Functions
-	void initWindow(const SWindowInfo &windowInfo);
+	void initWindow();
+	void initShader();
+	void initOpenGL();
 
 public:
 	//Constructors & Destructors

@@ -1,8 +1,13 @@
-#version 330
+#version 410 core
+//in vec4 ourColor;
+//in vec2 TexCoord;
 
-varying vec4 fragColor;
+out vec4 color;
+
+//uniform sampler2D image;
 
 void main()
-{
-    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
-}
+{    
+    //color = ourColor * texture(image, TexCoord);
+    color = vec4(1.0, 1.0, 1.0, 1.0);
+}  
