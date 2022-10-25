@@ -36,7 +36,7 @@ private:
 	string _windowTitle;
 
 	//Import class
-	unique_ptr<Engine3D> engine;
+	unique_ptr<Engine3D> _engine;
 	Shader shader;
 
 	//Private Functions

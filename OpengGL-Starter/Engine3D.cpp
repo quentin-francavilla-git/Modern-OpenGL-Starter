@@ -17,11 +17,11 @@ void Engine3D::vtxInit()
     unsigned int VBO;
 
     // Gen VBuffer & VArray //
-    glGenVertexArrays(1, &VAO);
+    glGenVertexArrays(1, &_VAO);
     glGenBuffers(1, &VBO);
 
     // Bind VBuffer & VArray //
-    glBindVertexArray(VAO);
+    glBindVertexArray(_VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, a->EBO);
 
@@ -39,9 +39,18 @@ void Engine3D::vtxInit()
 
 void Engine3D::drawPixel(myVTX *vtx)
 {
-    glBufferData(GL_ARRAY_BUFFER, 3 * sizeof(myVTX), vtx, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 1 * sizeof(myVTX), vtx, GL_DYNAMIC_DRAW);
     ResourceManager::GetShader("shader").Use();
-    glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glBindVertexArray(_VAO);
+    glDrawArrays(GL_POINTS, 0, 1);
+    glBindVertexArray(0);
+}
+
+void Engine3D::drawTriangle(myVTX* vtx, int size)
+{
+    glBufferData(GL_ARRAY_BUFFER, size * sizeof(myVTX), vtx, GL_DYNAMIC_DRAW);
+    ResourceManager::GetShader("shader").Use();
+    glBindVertexArray(_VAO);
+    glDrawArrays(GL_TRIANGLES, 0, size);
     glBindVertexArray(0);
 }

@@ -20,7 +20,7 @@ typedef struct
 class Engine3D
 {
 private:
-    unsigned int VAO;
+    unsigned int _VAO;
 
 	void vtxInit();
 public:
@@ -29,5 +29,6 @@ public:
 
 
     void drawPixel(myVTX* vtx);
+    void drawTriangle(myVTX* vtx, int size);
 };
 

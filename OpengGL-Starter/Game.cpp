@@ -13,7 +13,7 @@ Game::Game()
 
     initOpenGL();
     initShader();
-    engine = unique_ptr<Engine3D>(new Engine3D());
+    _engine = unique_ptr<Engine3D>(new Engine3D());
 
 }
 
@@ -28,22 +28,24 @@ void Game::render()
     glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    myVTX *vtx = (myVTX *)malloc(sizeof(myVTX) * 3);
+    int size = 3;
+
+    myVTX *vtx = (myVTX *)malloc(sizeof(myVTX) * size);
 
     if (!vtx)
         return;
 
     vtx[0].x = -0.5f;
     vtx[0].y = -0.5f;
-    vtx[0].z = 0.0f;
+    vtx[0].z = -0.5f;
 
     vtx[1].x = 0.5f;
     vtx[1].y = -0.5f;
-    vtx[1].z = 0.0f;
+    vtx[1].z = -0.5f;
 
     vtx[2].x = 0.0f;
     vtx[2].y = 0.5f;
-    vtx[2].z = 0.0f;
+    vtx[2].z = -0.5f;
 
 
 
@@ -54,7 +56,8 @@ void Game::render()
         vtx[i].a = 1.0f;
     }
 
-    engine->drawPixel(vtx);
+    //_engine->drawPixel(vtx);
+    _engine->drawTriangle(vtx, 3);
 
     free(vtx);
 }
@@ -80,12 +83,12 @@ void Game::initOpenGL()
     // OpenGL configuration //
     glViewport(0, 0, windowInfo.windowWidth, windowInfo.windowHeight);
     glEnable(GL_BLEND);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
+    //glEnable(GL_DEPTH_TEST);
+    //glDepthFunc(GL_LEQUAL);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glPointSize(8);
-    glLineWidth(5);
+    glPointSize(2);
+    //glLineWidth(5);
     cout << "OpenGL Configuration." << endl;
 }
 

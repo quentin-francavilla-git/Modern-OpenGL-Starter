@@ -1,5 +1,5 @@
 #version 410 core
-//in vec4 ourColor;
+in vec4 ourColor;
 //in vec2 TexCoord;
 
 out vec4 color;
@@ -9,5 +9,5 @@ out vec4 color;
 void main()
 {    
     //color = ourColor * texture(image, TexCoord);
-    color = vec4(1.0, 1.0, 1.0, 1.0);
+    color = vec4(ourColor);
 }  
