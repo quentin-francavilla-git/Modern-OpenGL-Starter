@@ -14,7 +14,6 @@ int main(void)
         //game->ProcessInput(dt);
 
         //game->update(dt);
-
         game->render();
 
         /* Swap front and back buffers */
