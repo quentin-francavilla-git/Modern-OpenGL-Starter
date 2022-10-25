@@ -4,18 +4,14 @@
 #include "Engine3D.h"
 #include "Shader.h"
 
-struct SWindowInfo
-{
-	int res;							//0=160x120 1=360x240 4=640x480
-	int screenWidth;					//screen width
-	int screenHeight;					//screen height
-	int SW2;							//half of screen width
-	int SH2;							//half of screen height
-	int pixelScale;						//OpenGL pixel scale
-	int windowWidth;					//OpenGL window width
-	int windowHeight;					//OpenGL window height
-	const char* windowTitle;
-};
+#define res					1								//0=160x120 1=360x240 4=640x480
+#define ScreenWidth         (1024 / 4) * res						//screen width
+#define ScreenHeight        (768  / 4) * res						//screen height
+#define ScreenWidth2        (ScreenWidth / 2)               //half of screen width
+#define ScreenHeight2       (ScreenHeight / 2)              //half of screen height
+#define pixelScale			4/res							//OpenGL pixel scale
+#define WindowWidth			(ScreenWidth * pixelScale)		//OpenGL window width
+#define WindowHeight		(ScreenHeight * pixelScale)		//OpenGL window height
 
 // Represents the current state of the game
 enum GameState {
@@ -31,7 +27,6 @@ private:
 	GameState State;
 
 	//Window
-	SWindowInfo windowInfo;
 	GLFWwindow	*_window;
 	string _windowTitle;
 

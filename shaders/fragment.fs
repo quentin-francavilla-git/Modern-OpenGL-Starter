@@ -10,4 +10,5 @@ void main()
 {    
     //color = ourColor * texture(image, TexCoord);
     color = vec4(ourColor);
+    //color = vec4(1.0, 0.0, 0.0, 1.0);
 }  

@@ -22,42 +22,46 @@ Game::~Game()
 {
 }
 
+int tick;
 //Public Functions
 void Game::render()
 {
     glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    int size = 3;
+    int size = 1;
 
     myVTX *vtx = (myVTX *)malloc(sizeof(myVTX) * size);
 
     if (!vtx)
         return;
+    float x, y, c = 0;
+    for (y = 0; y < ScreenHeight2; y++)
+    {
+        for (x = 0; x < ScreenWidth2; x++)
+        {
+            vtx[0].x = x * (pixelScale / 2);
+            vtx[0].y = y * (pixelScale / 2);
+            vtx[0].z = 0.0;
 
-    vtx[0].x = -0.5f;
-    vtx[0].y = -0.5f;
-    vtx[0].z = -0.5f;
+            vtx[0].x /= ScreenWidth;
+            vtx[0].y /= ScreenHeight;
 
-    vtx[1].x = 0.5f;
-    vtx[1].y = -0.5f;
-    vtx[1].z = -0.5f;
+            if (c == 0) { vtx[0].r = 255/255; vtx[0].g = 255 / 255; vtx[0].b = 0; } //Yellow	
+            if (c == 1) { vtx[0].r = 160/255; vtx[0].g = 160 / 255; vtx[0].b = 0; } //Yellow darker	
+            if (c == 2) { vtx[0].r = 0; vtx[0].g = 255 / 255; vtx[0].b = 0; } //Green	
+            if (c == 3) { vtx[0].r = 0; vtx[0].g = 160 / 255; vtx[0].b = 0; } //Green darker	
+            if (c == 4) { vtx[0].r = 0; vtx[0].g = 255 / 255; vtx[0].b = 255 / 255; } //Cyan	
+            if (c == 5) { vtx[0].r = 0; vtx[0].g = 160 / 255; vtx[0].b = 160 / 255; } //Cyan darker
+            if (c == 6) { vtx[0].r = 160/255; vtx[0].g = 100 / 255; vtx[0].b = 0; } //brown	
+            if (c == 7) { vtx[0].r = 110/255; vtx[0].g = 50 / 255; vtx[0].b = 0; } //brown darker
 
-    vtx[2].x = 0.0f;
-    vtx[2].y = 0.5f;
-    vtx[2].z = -0.5f;
-
-
-
-    for (int i = 0; i < 3; i++) {
-        vtx[i].r = 1.0f;
-        vtx[i].g = 1.5f;
-        vtx[i].b = 1.2f;
-        vtx[i].a = 1.0f;
+            vtx[0].a = 1.0;
+            _engine->drawPixel(vtx);
+            c += 1; if (c > 8) { c = 0; }
+        }
     }
-
     //_engine->drawPixel(vtx);
-    _engine->drawTriangle(vtx, 3);
 
     free(vtx);
 }
@@ -81,31 +85,19 @@ void Game::initOpenGL()
 
 
     // OpenGL configuration //
-    glViewport(0, 0, windowInfo.windowWidth, windowInfo.windowHeight);
+    glViewport(0, 0, WindowWidth, WindowHeight);
     glEnable(GL_BLEND);
     //glEnable(GL_DEPTH_TEST);
     //glDepthFunc(GL_LEQUAL);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glPointSize(2);
+    glPointSize(pixelScale);
     //glLineWidth(5);
     cout << "OpenGL Configuration." << endl;
 }
 
 void Game::initWindow()
 {
-    //Window data
-    windowInfo.res = 1;
-    windowInfo.screenWidth = 160 * windowInfo.res;
-    windowInfo.screenHeight = 120 * windowInfo.res;
-    windowInfo.SW2 = windowInfo.screenWidth / 2;
-    windowInfo.SH2 = windowInfo.screenHeight / 2;
-    windowInfo.pixelScale = 4 / windowInfo.res;
-    windowInfo.windowWidth = windowInfo.screenWidth * windowInfo.pixelScale;
-    windowInfo.windowHeight = windowInfo.screenHeight * windowInfo.pixelScale;
-    windowInfo.windowTitle = "OpenGL Starter";
-    _window = nullptr;
-
     if (!glfwInit())
         throw runtime_error("Failed to initialize GLFW.");
 
@@ -114,7 +106,7 @@ void Game::initWindow()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, false);
 
-    _window = glfwCreateWindow(windowInfo.windowWidth, windowInfo.windowHeight, windowInfo.windowTitle, NULL, NULL);
+    _window = glfwCreateWindow(WindowWidth, WindowHeight, "Modern OpenGL Starter", NULL, NULL);
     if (!_window)
     {
         throw runtime_error("Failed to open GLFW window.If you have an Intel GPU, they are not 3.3 compatible.Try the 2.1 version of the tutorials.");
