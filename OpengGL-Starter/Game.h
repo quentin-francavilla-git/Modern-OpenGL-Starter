@@ -44,8 +44,9 @@ public:
 	Game();
 	virtual ~Game();
 
-	void update(float dt);
-	void render();
+	// Public Functions
+	void update(float deltaTime);
+	void render(float deltaTime);
 
 	//Method
 	GLFWwindow *getWindow() const;

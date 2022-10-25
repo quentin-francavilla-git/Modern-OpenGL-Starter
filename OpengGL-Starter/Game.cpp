@@ -4,6 +4,9 @@
 //Constructors & Destructors
 Game::Game()
 {
+    double lastTime = 0;
+    int nbFrames = 0;
+
     try {
         initWindow();
     }
@@ -24,7 +27,7 @@ Game::~Game()
 
 int tick;
 //Public Functions
-void Game::render()
+void Game::render(float deltaTime)
 {
     glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -37,10 +40,14 @@ void Game::render()
         return;
 
     _engine->drawTesting();
-
+    //_engine->drawTriangle(vtx, 3);
     //_engine->drawPixel(vtx);
 
     free(vtx);
+}
+
+void Game::update(float deltaTime)
+{
 }
 
 //Private Functions

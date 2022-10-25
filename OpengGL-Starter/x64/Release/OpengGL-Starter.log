@@ -1,9 +1,8 @@
-﻿  Engine3D.cpp
-  Game.cpp
-  main.cpp
+﻿  Game.cpp
+C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\OpengGL-Starter\Game.cpp(46,21): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
   Génération de code en cours
-  123 of 402 functions (30.6%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    29 functions had inline decision re-evaluated but remain unchanged
+  2 of 403 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code
   OpengGL-Starter.vcxproj -> C:\Users\Quentin\Documents\Projets\C++\OpenGL\OpengGL-Starter\x64\Release\OpengGL-Starter.exe
