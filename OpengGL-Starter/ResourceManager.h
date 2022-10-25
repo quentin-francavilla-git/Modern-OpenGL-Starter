@@ -1,7 +1,6 @@
 #pragma once
 #include "Texture2D.h"
 #include "Shader.h"
-#include "stb_image.h"
 
 class ResourceManager
 {

@@ -1,5 +1,4 @@
 #include "Game.h"
-#include "lib.h"
 
 int main(void)
 {
@@ -8,8 +7,7 @@ int main(void)
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(game->getWindow()) && glfwGetKey(game->getWindow(), GLFW_KEY_ESCAPE) != GLFW_PRESS)
     {
-        /* Poll for and process events */
-        glfwPollEvents();
+
 
         // manage user input
         // -----------------
@@ -21,6 +19,9 @@ int main(void)
 
         /* Swap front and back buffers */
         glfwSwapBuffers(game->getWindow());
+
+        /* Poll for and process events */
+        glfwPollEvents();
 
     }
 

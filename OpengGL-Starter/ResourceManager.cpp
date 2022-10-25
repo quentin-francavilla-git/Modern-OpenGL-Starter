@@ -1,4 +1,5 @@
 #include "ResourceManager.h"
+#include "stb_image.h"
 
 // Instantiate static variables
 map<string, Texture2D>    ResourceManager::Textures;
@@ -74,6 +75,7 @@ Shader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *
     const char *vShaderCode = vertexCode.c_str();
     const char *fShaderCode = fragmentCode.c_str();
     const char *gShaderCode = geometryCode.c_str();
+
     // 2. now create shader object from source code
     Shader shader;
     shader.Compile(vShaderCode, fShaderCode, gShaderFile != nullptr ? gShaderCode : nullptr);

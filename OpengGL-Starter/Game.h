@@ -2,6 +2,7 @@
 
 #include "lib.h"
 #include "Engine3D.h"
+#include "Shader.h"
 
 struct SWindowInfo
 {
@@ -32,6 +33,15 @@ private:
 	//Window
 	GLFWwindow	*_window;
 	string _windowTitle;
+
+	//Import class
+	unique_ptr<Engine3D> engine;
+	Shader shader;
+
+
+	//Test
+	unsigned int _VAO;
+	unsigned int _shaderProg;
 
 	//Private Functions
 	void initWindow(const SWindowInfo &windowInfo);
