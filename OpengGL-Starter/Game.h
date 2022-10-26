@@ -34,6 +34,16 @@ private:
 	unique_ptr<Engine3D> _engine;
 	Shader shader;
 
+	// Time
+	float dt;
+	float currentTime;
+	float lastTime;
+	double limitFPS;
+
+	myVTX *_vtx;
+	float valueXtest;
+	float valueYtest;
+
 	//Private Functions
 	void initWindow();
 	void initShader();
@@ -45,10 +55,13 @@ public:
 	virtual ~Game();
 
 	// Public Functions
-	void update(float deltaTime);
-	void render(float deltaTime);
+	void updateDt();
+	void update();
+	void render();
+	void processInput();
 
 	//Method
 	GLFWwindow *getWindow() const;
+	const float &getTime() const;
 };
 

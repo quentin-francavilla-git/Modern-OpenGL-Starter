@@ -4,8 +4,16 @@
 //Constructors & Destructors
 Game::Game()
 {
-    double lastTime = 0;
-    int nbFrames = 0;
+    myVTX *vtx = NULL;
+    valueXtest = 0;
+    valueYtest = 0;
+    State = GAME_ACTIVE;
+
+    // Time
+    dt = 0.0f;
+    currentTime = 0.0f;
+    lastTime = 0.0f;
+    limitFPS = 1.0 / 60.0;
 
     try {
         initWindow();
@@ -25,29 +33,79 @@ Game::~Game()
 {
 }
 
-int tick;
 //Public Functions
-void Game::render(float deltaTime)
+void Game::render()
 {
     glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    int size = 1;
 
-    myVTX *vtx = (myVTX *)malloc(sizeof(myVTX) * size);
+    myVTX *vtx = _vtx;
 
     if (!vtx)
         return;
 
-    _engine->drawTesting();
+    //_engine->drawTesting();
     //_engine->drawTriangle(vtx, 3);
-    //_engine->drawPixel(vtx);
+    _engine->drawPixel(vtx);
 
-    free(vtx);
+    //free(vtx);
+    free(_vtx);
 }
 
-void Game::update(float deltaTime)
+void Game::update()
 {
+
+    int size = 1;
+
+    _vtx = (myVTX*)malloc(sizeof(myVTX) * size);
+
+    if (!_vtx)
+        return;
+
+    _vtx[0].x = valueXtest;
+    _vtx[0].y = valueYtest;
+    _vtx[0].z = 0.0;
+
+    _vtx[0].r = 1.0;
+    _vtx[0].g = 0.0;
+    _vtx[0].b = 0.0;
+    _vtx[0].a = 1.0;
+
+}
+
+void Game::updateDt()
+{
+    currentTime = static_cast<float>(glfwGetTime());
+    dt = (currentTime - lastTime) / limitFPS;
+    lastTime = currentTime;
+}
+
+void Game::processInput()
+{
+    if (State == GAME_ACTIVE)
+    {
+        if (glfwGetKey(_window, GLFW_KEY_W) == GLFW_PRESS)
+        {
+            cout << "Up" << endl;
+            valueYtest += 0.01 * dt;
+        }
+        else if (glfwGetKey(_window, GLFW_KEY_S) == GLFW_PRESS)
+        {
+            cout << "Down" << endl;
+            valueYtest -= 0.01 * dt;
+        }
+        if (glfwGetKey(_window, GLFW_KEY_A) == GLFW_PRESS)
+        {
+            cout << "Left" << endl;
+            valueXtest -= 0.01 * dt;
+        }
+        else if (glfwGetKey(_window, GLFW_KEY_D) == GLFW_PRESS)
+        {
+            cout << "Rught" << endl;
+            valueXtest += 0.01 * dt;
+        }
+    }
 }
 
 //Private Functions
@@ -105,4 +163,9 @@ void Game::initWindow()
 GLFWwindow *Game::getWindow() const
 {   
     return _window;
+}
+
+const float &Game::getTime() const
+{
+    return dt;
 }
