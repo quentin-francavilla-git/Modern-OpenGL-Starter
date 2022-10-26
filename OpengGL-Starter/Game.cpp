@@ -46,8 +46,8 @@ void Game::render()
         return;
 
     //_engine->drawTesting();
-    //_engine->drawTriangle(vtx, 3);
-    _engine->drawPixel(vtx);
+    _engine->drawTriangle(vtx, 3);
+    //_engine->drawPixel(vtx);
 
     //free(vtx);
     free(_vtx);
@@ -56,21 +56,33 @@ void Game::render()
 void Game::update()
 {
 
-    int size = 1;
+    int size = 3;
 
     _vtx = (myVTX*)malloc(sizeof(myVTX) * size);
 
     if (!_vtx)
         return;
 
-    _vtx[0].x = valueXtest;
-    _vtx[0].y = valueYtest;
+    _vtx[0].x = -0.5;
+    _vtx[0].y = -0.5;
     _vtx[0].z = 0.0;
+    _vtx[0].u = -0.5;   
+    _vtx[0].v = 0.0;
 
-    _vtx[0].r = 1.0;
-    _vtx[0].g = 0.0;
-    _vtx[0].b = 0.0;
-    _vtx[0].a = 1.0;
+    _vtx[1].x = 0.5;
+    _vtx[1].y = -0.5;
+    _vtx[1].z = 0.0;
+
+    _vtx[2].x = 0.0;
+    _vtx[2].y = 0.5;
+    _vtx[2].z = 0.0;
+
+    for (int i = 0; i < 3; i++) {
+        _vtx[i].r = 1.0;
+        _vtx[i].g = 0.0;
+        _vtx[i].b = 0.0;
+        _vtx[i].a = 1.0;
+    }
 
 }
 

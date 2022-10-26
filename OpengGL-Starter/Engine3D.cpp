@@ -32,8 +32,8 @@ void Engine3D::vtxInit()
     glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(myVTX), (void*)(3 * sizeof(float))); //vec color
     glEnableVertexAttribArray(1);
 
-    //glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(myVTX), (void*)(7 * sizeof(float))); //uv
-    //glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(myVTX), (void*)(7 * sizeof(float))); //uv
+    glEnableVertexAttribArray(2);
     cout << "VTX init." << endl;
 }
 

@@ -22,8 +22,8 @@ typedef struct
     float b;
     float a;
 
-    //float u;
-    //float v;
+    float u;
+    float v;
 } myVTX;
 
 class Engine3D
